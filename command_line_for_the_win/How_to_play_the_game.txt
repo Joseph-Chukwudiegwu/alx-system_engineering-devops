@@ -1,0 +1,129 @@
+QUESTION: 1
+Your first challenge is to print "hello world" on the terminal in a single command.
+Hint: There are many ways to print text on the command line, one way is with the 'echo' command. Try it below and good luck!
+
+ANS	cat <<< "hello world"
+ANS	echo -e hello world
+ANS	printf '%s %s\n' hello world
+ANS	echo "hello world "
+ANS	echo "hello world" > hello.txt && cat hello.txt
+ANS	echo "uryyb jbeyq" | tr '[n-za-m]' '[a-z]'
+
+QUESTION: 2
+Print the current working directory.
+
+ANS	pwd dir
+ANS	echo $PWD
+ANS	pwd [-LP]
+ANS	pwd $	
+
+QUESTION: 3
+List names of all the files in the current directory, one file per line.
+
+ANS	for f in *; do echo $f; done
+ANS 	ls | sort
+ANS	ls -p | grep -v /
+ANS	ls -ch
+
+QUESTION: 4
+There is a file named access.log in the current directory. Print the contents.
+
+ANS	cat  access.log
+ANS	grep '.*' access.log
+ANS	dd if=access.log 2>/dev/null
+ANS	cat a*.log
+
+QUESTION: 5
+Print the last 5 lines of "access.log".
+
+ANS	cat access.log | tail -n -5
+ANS	tail --lines 5 access.log
+ANS	tail access.log --lines=5
+
+QUESTION: 6
+Create an empty file named take-the-command-challenge in the current working directory.
+
+ANS	touch take-the-command-challenge
+ANS	cat > take-the-command-challenge
+
+QUESTION: 7
+Create a directory named tmp/files in the current working directory
+Hint: The directory "tmp/" doesn't exist, with one command you need to create both "tmp/" and "tmp/files"
+
+ANS	 mkdir --parents tmp/files
+
+QUESTION: 8
+Copy the file named take-the-command-challenge to the directory tmp/files
+
+ANS	cp take-the-command-challenge  tmp/files
+
+QUESTION: 9
+Move the file named take-the-command-challenge to the directory tmp/files
+
+ANS	mv take* tmp/files/
+
+QUESTION: 10
+A symbolic link is a type of file that is a reference to another file.
+Create a symbolic link named take-the-command-challenge that points to the file tmp/files/take-the-command-challenge.
+
+ANS	ln --symbolic tmp/files/take-the-command-challenge	
+
+QUESTION: 11
+Move the file named take-the-command-challenge to the directory tmp/files
+
+ANS	mv  take-the-command-challenge  tmp/files
+ANS	ln -sf tmp/files/take-the-command-challenge
+ANS	ln -s   tmp/files/take-the-command-challenge take-the-command-challenge
+
+QUESTION: 12
+Delete all of the files in this challenge directory including all subdirectories and their contents.
+Hint: There are files and directories that start with a dot ".", "rm -rf *" won't work here!
+
+ANS	rm -r $(ls -a)
+
+QUESTION: 13
+There are files in this challenge with different file extensions.
+Remove all files with the .doc extension recursively in the current working directory.
+
+ANS	find -type f -name '*.doc' -print -delete
+
+QUESTION: 14
+There is a file named access.log in the current working directory. Print all lines in this file that contains the string "GET".
+
+ANS	cat access.log | grep -E "GET"
+
+QUESTION: 15
+Print all files in the current directory, one per line (not the path, just the filename) that contain the string "500".
+
+ANS	grep -rl "500"
+ANS ls | grep -lr "500"
+ANS grep -lr "500"
+ANS grep 500 * -l
+ANS grep -ls "500" *
+ANS ls | grep -rl 500
+ANS grep 500 -l *
+ANS grep "500" * -l
+
+QUESTION: 16
+Print the relative file paths, one path per line for all filenames that start with "access.log" in the current directory.
+
+ANS	find -name "access.log*"
+
+
+QUESTION: 17
+Print all matching lines (without the filename or the file path) in all files under the current directory that start with "access.log" that contain the string "500".
+Note that there are no files named access.log in the current directory, you will need to search recursively.
+
+ANS	find . -name 'access.log*' | xargs grep -h '500' 
+
+QUESTION: 18
+Extract all IP addresses from files that start with "access.log" printing one IP address per line.
+
+ANS	grep -rw . | awk '{print $1}
+ANS for i in $(find . -name "access.log*"); do cat $i | awk '{print $1}'; done
+ANS find . -type f -name "access.log*" -exec grep -oE '[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}' {} \; 
+ANS grep -ro "^[0-9.]*"
+ANS grep -E ^[0-9.]* -rho
+ANS grep -hr . | awk '{print $1}'
+ANS grep -ro ^[0-9.]*  **/access.log*
+ANS  -name "access.log
