@@ -7,7 +7,7 @@
 #
 ## `Background Context`
 
-https://s3.amazonaws.com/intranet-projects-files/holbertonschool-sysadmin_devops/324/06AChAO.png
+![image](https://github.com/Joseph-Chukwudiegwu/alx-system_engineering-devops/assets/117829502/d983dd65-4996-42c9-96f4-4c8884f3a9e7)
 
 https://intranet.alxswe.com/rltoken/a83_NOBEtXgFr1Yqej0HYA
 
